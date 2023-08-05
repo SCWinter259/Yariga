@@ -3,14 +3,10 @@ import { useEffect, useRef } from "react";
 
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import { ThemedTitleV2 } from "@refinedev/mui";
+import yariga from "../assets/yariga.svg";
+import { colors } from "../constants/colors";
 
 import { CredentialResponse } from "../interfaces/google";
-
-// Todo: Update your Google Client ID here
-const GOOGLE_CLIENT_ID =
-  "1041339102270-e1fpe2b6v6u1didfndh7jkjmpcashs4f.apps.googleusercontent.com";
 
 export const Login: React.FC = () => {
   const { mutate: login } = useLogin<CredentialResponse>();
@@ -23,10 +19,11 @@ export const Login: React.FC = () => {
         return;
       }
 
+      // import.meta.env is a Vite thing. In other tools that might be process.env
       try {
         window.google.accounts.id.initialize({
           ux_mode: "popup",
-          client_id: GOOGLE_CLIENT_ID,
+          client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
           callback: async (res: CredentialResponse) => {
             if (res.credential) {
               login(res);
@@ -47,40 +44,33 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <Container
-      style={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Box
-        display="flex"
-        gap="36px"
-        justifyContent="center"
-        flexDirection="column"
+    <Box component="div" sx={{ backgroundColor: colors.LOTION }}>
+      <Container
+        component="main"
+        maxWidth="xs"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          height: "100vh",
+        }}
       >
-        <ThemedTitleV2
-          collapsed={false}
-          wrapperStyles={{
-            fontSize: "22px",
+        <Box
+          sx={{
+            display: "flex",
             justifyContent: "center",
+            flexDirection: "column",
+            alignItems: "center",
           }}
-        />
-
-        <GoogleButton />
-
-        <Typography align="center" color={"text.secondary"} fontSize="12px">
-          Powered by
-          <img
-            style={{ padding: "0 5px" }}
-            alt="Google"
-            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fgoogle.svg"
-          />
-          Google
-        </Typography>
-      </Box>
-    </Container>
+        >
+          <div>
+            <img src={yariga} alt="Yariga Logo" />
+          </div>
+          <Box mt={4}>
+            <GoogleButton />
+          </Box>
+        </Box>
+      </Container>
+    </Box>
   );
 };
