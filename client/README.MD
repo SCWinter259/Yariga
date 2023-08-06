@@ -7,7 +7,7 @@
 </div>
 <br/>
 
-This [refine](https://github.com/refinedev/refine) project was generated with [superplate](https://github.com/pankod/superplate).
+This [refine](https://github.com/pankod/refine) project was generated with [superplate](https://github.com/pankod/refine).
 
 ## Getting Started
 
