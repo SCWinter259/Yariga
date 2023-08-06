@@ -3,10 +3,11 @@ import { useEffect, useRef } from "react";
 
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import yariga from "../assets/yariga.svg";
-import { colors } from "../constants/colors";
 
 import { CredentialResponse } from "../interfaces/google";
+
+import yariga from "../assets/yariga.svg";
+import {colors} from '../constants/colors';
 
 export const Login: React.FC = () => {
   const { mutate: login } = useLogin<CredentialResponse>();
@@ -19,11 +20,10 @@ export const Login: React.FC = () => {
         return;
       }
 
-      // import.meta.env is a Vite thing. In other tools that might be process.env
       try {
         window.google.accounts.id.initialize({
           ux_mode: "popup",
-          client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+          client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
           callback: async (res: CredentialResponse) => {
             if (res.credential) {
               login(res);

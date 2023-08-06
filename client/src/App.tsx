@@ -1,7 +1,6 @@
 import {
   AuthBindings,
   Authenticated,
-  GitHubBanner,
   Refine,
 } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
@@ -23,24 +22,24 @@ import routerBindings, {
 } from "@refinedev/react-router-v6";
 import dataProvider from "@refinedev/simple-rest";
 import axios, { AxiosRequestConfig } from "axios";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import { Header } from "./components/header";
-import { ColorModeContextProvider } from "./contexts/color-mode";
-import { CredentialResponse } from "./interfaces/google";
+import { CredentialResponse } from "interfaces/google";
 import {
   BlogPostCreate,
   BlogPostEdit,
   BlogPostList,
   BlogPostShow,
-} from "./pages/blog-posts";
+} from "pages/blog-posts";
 import {
   CategoryCreate,
   CategoryEdit,
   CategoryList,
   CategoryShow,
-} from "./pages/categories";
-import { Login } from "./pages/login";
-import { parseJwt } from "./utils/parse-jwt";
+} from "pages/categories";
+import { Login } from "pages/login";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { parseJwt } from "utils/parse-jwt";
+import { Header } from "./components/header";
+import { ColorModeContextProvider } from "./contexts/color-mode";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -170,14 +169,14 @@ function App() {
               options={{
                 syncWithLocation: true,
                 warnWhenUnsavedChanges: true,
-                projectId: "V5W5NF-UrHTXe-69MY3t",
+                projectId: "F94Osq-nQnFfZ-Vp7gP4",
               }}
             >
               <Routes>
                 <Route
                   element={
                     <Authenticated fallback={<CatchAllNavigate to="/login" />}>
-                      <ThemedLayoutV2 Header={() => <Header sticky />}>
+                      <ThemedLayoutV2 Header={() => <Header sticky={true} />}>
                         <Outlet />
                       </ThemedLayoutV2>
                     </Authenticated>
