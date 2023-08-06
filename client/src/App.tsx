@@ -1,7 +1,6 @@
 import {
   AuthBindings,
   Authenticated,
-  GitHubBanner,
   Refine,
 } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
@@ -135,7 +134,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <GitHubBanner />
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <CssBaseline />
@@ -178,7 +176,7 @@ function App() {
                 <Route
                   element={
                     <Authenticated fallback={<CatchAllNavigate to="/login" />}>
-                      <ThemedLayoutV2 Header={() => <Header isSticky={true} />}>
+                      <ThemedLayoutV2 Header={() => <Header sticky={true} />}>
                         <Outlet />
                       </ThemedLayoutV2>
                     </Authenticated>
