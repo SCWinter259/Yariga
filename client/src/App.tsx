@@ -22,7 +22,7 @@ import routerProvider from "@refinedev/react-router-v6/legacy";
 import axios, { AxiosRequestConfig } from "axios";
 
 import { Title } from "components/layout/Title";
-import { Sider } from "components/layout/Sider";
+import { Sider } from "components/layout/Sider/Sider";
 import { Header } from "components/layout/Header";
 import { Layout } from "components/layout/Layout";
 import { ColorModeContextProvider } from "contexts/colorMode";
