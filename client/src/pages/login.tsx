@@ -1,5 +1,4 @@
 import { useLogin } from "@refinedev/core";
-import { useEffect, useRef } from "react";
 
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -8,40 +7,10 @@ import { CredentialResponse } from "../interfaces/google";
 
 import yariga from "../assets/yariga.svg";
 import {colors} from '../constants/colors';
+import { GoogleButton } from "components/GoogleButton";
 
-export const Login: React.FC = () => {
+export const LoginPage: React.FC = () => {
   const { mutate: login } = useLogin<CredentialResponse>();
-
-  const GoogleButton = (): JSX.Element => {
-    const divRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-      if (typeof window === "undefined" || !window.google || !divRef.current) {
-        return;
-      }
-
-      try {
-        window.google.accounts.id.initialize({
-          ux_mode: "popup",
-          client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-          callback: async (res: CredentialResponse) => {
-            if (res.credential) {
-              login(res);
-            }
-          },
-        });
-        window.google.accounts.id.renderButton(divRef.current, {
-          theme: "filled_blue",
-          size: "medium",
-          type: "standard",
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    }, []);
-
-    return <div ref={divRef} />;
-  };
 
   return (
     <Box component="div" sx={{ backgroundColor: colors.LOTION }}>
@@ -67,7 +36,7 @@ export const Login: React.FC = () => {
             <img src={yariga} alt="Yariga Logo" />
           </div>
           <Box mt={4}>
-            <GoogleButton />
+            <GoogleButton login={login}/>
           </Box>
         </Box>
       </Container>
