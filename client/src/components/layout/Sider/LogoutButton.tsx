@@ -4,7 +4,16 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Logout from "@mui/icons-material/Logout";
 
-export const LogoutButton = () => {
+interface LogoutButton {
+  t: {
+    (key: string, options?: any, defaultMessage?: string | undefined): string;
+    (key: string, defaultMessage?: string | undefined): string;
+  };
+  collapsed: boolean;
+  mutateLogout: any; // the type is different but I could not find where to import from
+}
+
+export const LogoutButton = ({ t, collapsed, mutateLogout }: LogoutButton) => {
   return (
     <Tooltip
       title={t("buttons.logout", "Logout")}
