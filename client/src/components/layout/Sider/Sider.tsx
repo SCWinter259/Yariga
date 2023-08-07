@@ -28,6 +28,7 @@ import { LogoutButton } from "./LogoutButton";
 import { DashboardButton } from "./DashboardButton";
 import { TreeViewHasItems } from "./TreeViewHasItems";
 import { TreeViewNoItem } from "./TreeViewNoItem";
+import { colors } from "../../../constants/colors";
 
 export const Sider: typeof DefaultSider = ({ render }) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -190,7 +191,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
             display: { sm: "block", md: "none" },
             "& .MuiDrawer-paper": {
               width: 256,
-              bgcolor: "#FCFCFC",
+              bgcolor: colors.LOTION,
             },
           }}
         >
@@ -213,7 +214,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
             display: { xs: "none", md: "block" },
             "& .MuiDrawer-paper": {
               width: drawerWidth,
-              bgcolor: "#FCFCFC",
+              bgcolor: colors.LOTION,
               overflow: "hidden",
               transition: "width 200ms cubic-bezier(0.4, 0, 0.6, 1) 0ms",
             },
@@ -241,13 +242,13 @@ export const Sider: typeof DefaultSider = ({ render }) => {
           </Box>
           <Button
             sx={{
-              background: "#475BE8",
+              background: colors.ROYAL_BLUE,
               color: "primary.contrastText",
               textAlign: "center",
               borderRadius: 0,
               borderTop: "1px solid #ffffff1a",
               "&:hover": {
-                background: "#1e36e8",
+                background: colors.PALATINATE_BLUE,
               },
             }}
             fullWidth
@@ -264,13 +265,13 @@ export const Sider: typeof DefaultSider = ({ render }) => {
             top: "64px",
             left: "0px",
             borderRadius: "0 6px 6px 0",
-            bgcolor: "#475be8",
+            bgcolor: colors.ROYAL_BLUE,
             zIndex: 1199,
             width: "36px",
           }}
         >
           <IconButton
-            sx={{ color: "#fff", width: "36px" }}
+            sx={{ color: colors.WHITE, width: "36px" }}
             onClick={() => setOpened((prev) => !prev)}
           >
             <MenuRounded />

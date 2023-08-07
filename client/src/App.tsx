@@ -1,5 +1,4 @@
 import {
-  GitHubBanner,
   Refine,
   LegacyAuthProvider as AuthProvider,
 } from "@refinedev/core";
@@ -121,9 +120,10 @@ function App() {
     },
   };
 
+  console.log(2)
+
   return (
     <ColorModeContextProvider>
-      <GitHubBanner />
       <CssBaseline />
       <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
       <RefineSnackbarProvider>
