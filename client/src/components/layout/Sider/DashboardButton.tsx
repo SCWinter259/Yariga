@@ -5,7 +5,24 @@ import ListItemIcon from "@mui/material/ListItemIcon/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText/ListItemText";
 import Dashboard from "@mui/icons-material/Dashboard";
 
-export const DashboardButton = () => {
+interface DashboardButton {
+  translate: {
+    (key: string, options?: any, defaultMessage?: string | undefined): string;
+    (key: string, defaultMessage?: string | undefined): string;
+  };
+  collapsed: boolean;
+  Link: React.FC<any>;
+  selectedKey: string;
+  setOpened: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const DashboardButton = ({
+  translate,
+  collapsed,
+  Link,
+  selectedKey,
+  setOpened,
+}: DashboardButton) => {
   return (
     <CanAccess resource="dashboard" action="list">
       <Tooltip

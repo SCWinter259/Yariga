@@ -79,17 +79,58 @@ export const Sider: typeof DefaultSider = ({ render }) => {
       const isSelected = route === selectedKey;
       const isNested = !(parentName === undefined);
 
-      if (children.length > 0) {
-        return <TreeViewHasItems />;
-      }
+      const treeViewHasItems = (
+        <TreeViewHasItems
+          route={route}
+          name={name}
+          item={item}
+          label={label}
+          collapsed={collapsed}
+          setCollapsed={setCollapsed}
+          handleClick={handleClick}
+          isOpen={isOpen}
+          isNested={isNested}
+          icon={icon}
+          isSelected={isSelected}
+          open={open}
+          renderTreeView={renderTreeView}
+          children={children}
+          selectedKey={selectedKey}
+        />
+      );
 
-      return <TreeViewNoItem />;
+      const treeViewNoItem = (
+        <TreeViewNoItem
+          route={route}
+          name={name}
+          item={item}
+          label={label}
+          collapsed={collapsed}
+          Link={Link}
+          isSelected={isSelected}
+          isNested={isNested}
+          setOpened={setOpened}
+          icon={icon}
+        />
+      );
+
+      return children.length > 0 ? treeViewHasItems : treeViewNoItem;
     });
   };
 
-  const dashboard = hasDashboard ? <DashboardButton /> : null;
+  const dashboard = hasDashboard ? (
+    <DashboardButton
+      translate={translate}
+      collapsed={collapsed}
+      Link={Link}
+      selectedKey={selectedKey}
+      setOpened={setOpened}
+    />
+  ) : null;
 
-  const logout = isExistAuthentication && <LogoutButton />;
+  const logout = isExistAuthentication && (
+    <LogoutButton t={t} collapsed={collapsed} mutateLogout={mutateLogout} />
+  );
 
   const items = renderTreeView(menuItems, selectedKey);
 

@@ -8,8 +8,43 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import MuiList from "@mui/material/List";
+import { ITreeMenu } from "@refinedev/core";
 
-export const TreeViewHasItems = () => {
+interface TreeViewHasItems {
+  route: string | undefined;
+  name: string;
+  item: ITreeMenu;
+  label: string | undefined;
+  collapsed: boolean;
+  setCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
+  handleClick: (key: string) => void;
+  isOpen: boolean;
+  isNested: boolean;
+  icon: React.ReactNode;
+  isSelected: boolean;
+  open: { [k: string]: any };
+  renderTreeView: (tree: ITreeMenu[], selectedKey: string) => JSX.Element[];
+  children: ITreeMenu[];
+  selectedKey: string;
+}
+
+export const TreeViewHasItems = ({
+  route,
+  name,
+  item,
+  label,
+  collapsed,
+  setCollapsed,
+  handleClick,
+  isOpen,
+  isNested,
+  icon,
+  isSelected,
+  open,
+  renderTreeView,
+  children,
+  selectedKey,
+}: TreeViewHasItems) => {
   return (
     <CanAccess
       key={route}

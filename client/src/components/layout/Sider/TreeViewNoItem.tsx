@@ -4,18 +4,19 @@ import ListItemButton from "@mui/material/ListItemButton/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText/ListItemText";
 import ListOutlined from "@mui/icons-material/ListOutlined";
+import { ITreeMenu } from "@refinedev/core/dist/interfaces";
 
-interface TreeViewNoItemType {
-  route: any;
-  name: any;
-  item: any;
-  label: any;
-  collapsed: any;
-  Link: any;
-  isSelected: any;
-  isNested: any;
-  setOpened: any;
-  icon: any;
+interface TreeViewNoItem {
+  route: string | undefined;
+  name: string;
+  item: ITreeMenu;
+  label: string | undefined;
+  collapsed: boolean;
+  Link: React.FC<any>;
+  isSelected: boolean;
+  isNested: boolean;
+  setOpened: React.Dispatch<React.SetStateAction<boolean>>;
+  icon: React.ReactNode;
 }
 
 export const TreeViewNoItem = ({
@@ -29,7 +30,7 @@ export const TreeViewNoItem = ({
   isNested,
   setOpened,
   icon,
-}: TreeViewNoItemType) => {
+}: TreeViewNoItem) => {
   return (
     <CanAccess
       key={route}
