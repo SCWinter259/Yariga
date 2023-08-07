@@ -4,6 +4,7 @@ import ListItemButton from "@mui/material/ListItemButton/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText/ListItemText";
 import Dashboard from "@mui/icons-material/Dashboard";
+import {colors} from '../../../constants/colors';
 
 interface DashboardButton {
   translate: {
@@ -54,7 +55,7 @@ export const DashboardButton = ({
             sx={{
               justifyContent: "center",
               minWidth: 36,
-              color: "#808191",
+              color: colors.ROMAN_SILVER,
               marginLeft: "6px",
               marginRight: "14px",
             }}

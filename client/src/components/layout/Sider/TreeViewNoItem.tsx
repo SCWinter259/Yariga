@@ -5,6 +5,7 @@ import ListItemIcon from "@mui/material/ListItemIcon/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText/ListItemText";
 import ListOutlined from "@mui/icons-material/ListOutlined";
 import { ITreeMenu } from "@refinedev/core/dist/interfaces";
+import {colors} from '../../../constants/colors';
 
 interface TreeViewNoItem {
   route: string | undefined;
@@ -56,9 +57,9 @@ export const TreeViewNoItem = ({
             py: isNested ? 1.25 : 1,
             "&.Mui-selected": {
               "&:hover": {
-                backgroundColor: isSelected ? "#1e36e8" : "transparent",
+                backgroundColor: isSelected ? colors.PALATINATE_BLUE : "transparent",
               },
-              backgroundColor: isSelected ? "#475be8" : "transparent",
+              backgroundColor: isSelected ? colors.ROYAL_BLUE : "transparent",
             },
             justifyContent: "center",
             margin: "10px auto",
@@ -71,7 +72,7 @@ export const TreeViewNoItem = ({
             sx={{
               justifyContent: "center",
               minWidth: 36,
-              color: isSelected ? "#fff" : "#808191",
+              color: isSelected ? colors.WHITE : colors.ROMAN_SILVER,
             }}
           >
             {icon ?? <ListOutlined />}
@@ -82,7 +83,7 @@ export const TreeViewNoItem = ({
               noWrap: true,
               fontSize: "16px",
               fontWeight: isSelected ? "bold" : "normal",
-              color: isSelected ? "#fff" : "#808191",
+              color: isSelected ? colors.WHITE : colors.ROMAN_SILVER,
               marginLeft: "10px",
             }}
           />

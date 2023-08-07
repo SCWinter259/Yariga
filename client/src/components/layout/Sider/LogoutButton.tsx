@@ -3,6 +3,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Logout from "@mui/icons-material/Logout";
+import { colors } from "../../../constants/colors";
 
 interface LogoutButton {
   t: {
@@ -36,7 +37,7 @@ export const LogoutButton = ({ t, collapsed, mutateLogout }: LogoutButton) => {
           sx={{
             justifyContent: "center",
             minWidth: 36,
-            color: "#808191",
+            color: colors.ROMAN_SILVER,
           }}
         >
           <Logout />
