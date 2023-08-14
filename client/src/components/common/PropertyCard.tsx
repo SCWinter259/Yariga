@@ -8,6 +8,7 @@ import CardContent from "@mui/material/CardContent";
 import Stack from "@mui/material/Stack";
 
 import { PropertyCardProps } from "interfaces/property";
+import { colors } from "constants/colors";
 
 export const PropertyCard = ({
   id,
@@ -48,18 +49,18 @@ export const PropertyCard = ({
         }}
       >
         <Stack direction="column" gap={1}>
-          <Typography fontSize={16} fontWeight={500} color="#11142d">
+          <Typography fontSize={16} fontWeight={500} color={colors.EERIE_BLACK}>
             {title}
           </Typography>
           <Stack direction="row" gap={0.5} alignItems="flex-start">
             <Place
               sx={{
                 fontSize: 18,
-                color: "#11142d",
+                color: colors.EERIE_BLACK,
                 marginTop: 0.5,
               }}
             />
-            <Typography fontSize={14} color="#808191">
+            <Typography fontSize={14} color={colors.ROMAN_SILVER}>
               {location}
             </Typography>
           </Stack>
@@ -68,10 +69,10 @@ export const PropertyCard = ({
           px={1.5}
           py={0.5}
           borderRadius={1}
-          bgcolor="#dadefa"
+          bgcolor={colors.AZUREISH_WHITE}
           height="fit-content"
         >
-          <Typography fontSize={12} fontWeight={600} color="#475be8">
+          <Typography fontSize={12} fontWeight={600} color={colors.ROYAL_BLUE}>
             ${price}
           </Typography>
         </Box>
