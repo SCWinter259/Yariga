@@ -133,8 +133,6 @@ function App() {
     },
   };
 
-  console.log(2)
-
   return (
     <ColorModeContextProvider>
       <CssBaseline />
