@@ -1,4 +1,5 @@
 import { ApexOptions } from "apexcharts";
+import { colors } from "./colors";
 
 export const TotalRevenueSeries = [
   {
@@ -18,7 +19,7 @@ export const TotalRevenueOptions: ApexOptions = {
       show: false,
     },
   },
-  colors: ["#475BE8", "#CFC8FF"],
+  colors: [colors.ROYAL_BLUE, colors.LAVENDER_BLUE],
   plotOptions: {
     bar: {
       borderRadius: 4,
