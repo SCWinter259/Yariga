@@ -1,8 +1,6 @@
 import { useList } from "@pankod/refine-core";
 
-import Typography from "@mui/material/Typography/Typography";
-import Box from "@mui/material/Box/Box";
-import Stack from "@mui/material/Stack/Stack";
+import { Typography, Box, Stack } from "@pankod/refine-mui";
 
 import { PieChart } from "components/charts/PieChart";
 import { PropertyReferrals } from "components/charts/PropertyReferrals";

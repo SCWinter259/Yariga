@@ -1,5 +1,22 @@
-export const Title = () => {
+import React from "react";
+import { useRouterContext, TitleProps } from "@pankod/refine-core";
+import { Button } from "@pankod/refine-mui";
+
+import logo from "assets/logo.svg";
+import yariga from 'assets/yariga.svg';
+
+export const Title: React.FC<TitleProps> = ({ collapsed }) => {
+    const { Link } = useRouterContext();
+
     return (
-        <h1>Title</h1>
+        <Button fullWidth variant="text" disableRipple>
+            <Link to="/">
+                {collapsed ? (
+                    <img src={logo} alt="Yariga" width="28px" />
+                ) : (
+                    <img src={yariga} alt="Refine" width="140px" />
+                )}
+            </Link>
+        </Button>
     );
 };

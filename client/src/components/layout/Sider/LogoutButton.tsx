@@ -1,11 +1,13 @@
-import Tooltip from "@mui/material/Tooltip";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Logout from "@mui/icons-material/Logout";
+import {
+  Tooltip,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@pankod/refine-mui";
+import { Logout } from "@mui/icons-material";
 import { colors } from "../../../constants/colors";
 
-interface LogoutButton {
+interface LogoutButtonProps {
   t: {
     (key: string, options?: any, defaultMessage?: string | undefined): string;
     (key: string, defaultMessage?: string | undefined): string;
@@ -14,7 +16,11 @@ interface LogoutButton {
   mutateLogout: any; // the type is different but I could not find where to import from
 }
 
-export const LogoutButton = ({ t, collapsed, mutateLogout }: LogoutButton) => {
+export const LogoutButton: React.FC<LogoutButtonProps> = ({
+  t,
+  collapsed,
+  mutateLogout,
+}) => {
   return (
     <Tooltip
       title={t("buttons.logout", "Logout")}

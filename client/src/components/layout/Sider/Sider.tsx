@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import { Sider as DefaultSider } from "@refinedev/mui";
 
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
+import {
+  Box,
+  Drawer,
+  Button,
+  IconButton,
+  MuiList,
+  Sider as DefaultSider
+} from "@pankod/refine-mui";
+import { ChevronLeft, ChevronRight, MenuRounded } from "@mui/icons-material";
 
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-
-import MuiList from "@mui/material/List";
-
-import ChevronLeft from "@mui/icons-material/ChevronLeft";
-import ChevronRight from "@mui/icons-material/ChevronRight";
-import MenuRounded from "@mui/icons-material/MenuRounded";
 import {
   ITreeMenu,
   useIsExistAuthentication,
@@ -21,7 +19,7 @@ import {
   useRouterContext,
   useMenu,
   useRefineContext,
-} from "@refinedev/core";
+} from "@pankod/refine-core";
 
 import { Title as DefaultTitle } from "../Title";
 import { LogoutButton } from "./LogoutButton";
@@ -41,9 +39,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
 
   const { menuItems, selectedKey, defaultOpenKeys } = useMenu();
   const isExistAuthentication = useIsExistAuthentication();
-  const { mutate: mutateLogout } = useLogout({
-    v3LegacyAuthProviderCompatible: true,
-  });
+  const { mutate: mutateLogout } = useLogout();
   const Title = useTitle();
 
   const [open, setOpen] = useState<{ [k: string]: any }>({});
@@ -61,11 +57,6 @@ export const Sider: typeof DefaultSider = ({ render }) => {
 
   const drawerWidth = collapsed ? 64 : 200;
 
-  // const drawerWidth = () => {
-  //   if (collapsed) return 64;
-  //   return 200;
-  // };
-
   const RenderToTitle = Title ?? DefaultTitle;
 
   const handleClick = (key: string) => {
@@ -75,6 +66,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
   const renderTreeView = (tree: ITreeMenu[], selectedKey: string) => {
     return tree.map((item: ITreeMenu) => {
       const { icon, label, route, name, children, parentName } = item;
+      console.log(item);
       const isOpen = open[route || ""] || false;
 
       const isSelected = route === selectedKey;
@@ -154,7 +146,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
   };
 
   const drawer = (
-    <MuiList disablePadding sx={{ mt: 1, color: "#808191" }}>
+    <MuiList disablePadding sx={{ mt: 1, color: colors.ROMAN_SILVER }}>
       {renderSider()}
     </MuiList>
   );

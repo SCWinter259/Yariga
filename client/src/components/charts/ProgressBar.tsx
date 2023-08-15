@@ -1,6 +1,4 @@
-import { Box } from "@mui/material";
-import { Typography } from "@mui/material";
-import { Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@pankod/refine-mui";
 
 import { colors } from "constants/colors";
 

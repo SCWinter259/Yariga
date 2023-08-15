@@ -1,7 +1,5 @@
-import { useLogin } from "@refinedev/core";
-
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
+import { useLogin } from "@pankod/refine-core";
+import { Box, Container } from "@pankod/refine-mui";
 
 import { CredentialResponse } from "../interfaces/google";
 
@@ -10,10 +8,7 @@ import { colors } from "../constants/colors";
 import { GoogleButton } from "components/GoogleButton";
 
 export const LoginPage: React.FC = () => {
-  console.log(1)
-  const { mutate: login } = useLogin<CredentialResponse>({
-    v3LegacyAuthProviderCompatible: true,
-  });
+  const { mutate: login } = useLogin<CredentialResponse>();
 
   return (
     <Box component="div" sx={{ backgroundColor: colors.LOTION }}>
