@@ -1,13 +1,16 @@
-import { useNavigate } from "react-router-dom";
-import { useTable } from "@pankod/refine-core";
+import { useNavigate } from "@pankod/refine-react-router-v6";
+import { useTable } from '@pankod/refine-core';
 import { useMemo } from "react";
 
-import { Typography } from "@mui/material";
-import { Box } from "@mui/material";
-import { Stack } from "@mui/material";
-import { TextField } from "@mui/material";
-import { Select } from "@mui/material";
-import { MenuItem } from "@mui/material";
+import {
+  Box,
+  Stack,
+  Typography,
+  TextField,
+  Select,
+  MenuItem,
+} from "@pankod/refine-mui";
+
 import { Add } from "@mui/icons-material";
 
 import { CustomButton } from "components/common/CustomButton";

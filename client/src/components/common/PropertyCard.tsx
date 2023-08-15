@@ -1,11 +1,13 @@
-import Place from "@mui/icons-material/Place";
-import { Link } from "react-router-dom";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import Stack from "@mui/material/Stack";
+import { Link } from "@pankod/refine-react-router-v6";
+import {
+  Typography,
+  Box,
+  Card,
+  CardMedia,
+  CardContent,
+  Stack,
+} from "@pankod/refine-mui";
+import { Place } from "@mui/icons-material";
 
 import { PropertyCardProps } from "interfaces/property";
 import { colors } from "constants/colors";

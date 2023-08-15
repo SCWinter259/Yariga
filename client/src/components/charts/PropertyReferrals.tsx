@@ -1,8 +1,5 @@
 import { propertyReferralsInfo } from "constants/propertyReferralsInfo";
-
-import {Box } from '@mui/material';
-import {Typography} from '@mui/material';
-import {Stack} from '@mui/material';
+import { Box, Stack, Typography } from "@pankod/refine-mui";
 
 import { ProgressBar } from './ProgressBar';
 import { colors } from "constants/colors";

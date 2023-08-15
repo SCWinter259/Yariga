@@ -1,12 +1,14 @@
-import { CanAccess } from "@refinedev/core";
-import Tooltip from "@mui/material/Tooltip";
-import ListItemButton from "@mui/material/ListItemButton/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText/ListItemText";
-import Dashboard from "@mui/icons-material/Dashboard";
-import {colors} from '../../../constants/colors';
+import { CanAccess } from "@pankod/refine-core";
+import {
+  Tooltip,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@pankod/refine-mui";
+import { Dashboard } from "@mui/icons-material";
+import { colors } from "../../../constants/colors";
 
-interface DashboardButton {
+interface DashboardButtonProps {
   translate: {
     (key: string, options?: any, defaultMessage?: string | undefined): string;
     (key: string, defaultMessage?: string | undefined): string;
@@ -17,13 +19,13 @@ interface DashboardButton {
   setOpened: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const DashboardButton = ({
+export const DashboardButton: React.FC<DashboardButtonProps> = ({
   translate,
   collapsed,
   Link,
   selectedKey,
   setOpened,
-}: DashboardButton) => {
+}) => {
   return (
     <CanAccess resource="dashboard" action="list">
       <Tooltip

@@ -1,14 +1,13 @@
-import { CanAccess } from "@refinedev/core";
-import Tooltip from "@mui/material/Tooltip";
-import ListItemButton from "@mui/material/ListItemButton/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText/ListItemText";
-import ListOutlined from "@mui/icons-material/ListOutlined";
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
-import Collapse from "@mui/material/Collapse";
-import MuiList from "@mui/material/List";
-import { ITreeMenu } from "@refinedev/core";
+import { CanAccess, ITreeMenu } from "@pankod/refine-core";
+import {
+  Tooltip,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Collapse,
+  MuiList,
+} from "@pankod/refine-mui";
+import { ExpandMore, ExpandLess, ListOutlined } from "@mui/icons-material";
 
 interface TreeViewHasItems {
   route: string | undefined;
@@ -45,6 +44,7 @@ export const TreeViewHasItems = ({
   children,
   selectedKey,
 }: TreeViewHasItems) => {
+  console.log("TreeViewHasItem");
   return (
     <CanAccess
       key={route}

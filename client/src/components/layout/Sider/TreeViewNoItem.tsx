@@ -1,11 +1,12 @@
-import { CanAccess } from "@refinedev/core";
-import Tooltip from "@mui/material/Tooltip";
-import ListItemButton from "@mui/material/ListItemButton/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText/ListItemText";
-import ListOutlined from "@mui/icons-material/ListOutlined";
-import { ITreeMenu } from "@refinedev/core/dist/interfaces";
-import {colors} from '../../../constants/colors';
+import { CanAccess, ITreeMenu } from "@pankod/refine-core";
+import {
+  Tooltip,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@pankod/refine-mui";
+import { ListOutlined } from "@mui/icons-material";
+import { colors } from "../../../constants/colors";
 
 interface TreeViewNoItem {
   route: string | undefined;
@@ -32,6 +33,7 @@ export const TreeViewNoItem = ({
   setOpened,
   icon,
 }: TreeViewNoItem) => {
+  console.log("TreeViewNoItem");
   return (
     <CanAccess
       key={route}
@@ -57,7 +59,9 @@ export const TreeViewNoItem = ({
             py: isNested ? 1.25 : 1,
             "&.Mui-selected": {
               "&:hover": {
-                backgroundColor: isSelected ? colors.PALATINATE_BLUE : "transparent",
+                backgroundColor: isSelected
+                  ? colors.PALATINATE_BLUE
+                  : "transparent",
               },
               backgroundColor: isSelected ? colors.ROYAL_BLUE : "transparent",
             },

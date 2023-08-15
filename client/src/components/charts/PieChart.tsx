@@ -1,7 +1,5 @@
 import { PieChartProps } from "interfaces/home";
-import { Box } from "@mui/material";
-import { Stack } from "@mui/material";
-import { Typography } from "@mui/material";
+import { Box, Typography, Stack } from "@pankod/refine-mui";
 import ReactApexChart from "react-apexcharts";
 import { colors as myColors } from "../../constants/colors";
 

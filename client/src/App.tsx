@@ -1,23 +1,22 @@
-import {
-  Refine,
-  LegacyAuthProvider as AuthProvider,
-} from "@refinedev/core";
+import { Refine, AuthProvider } from "@pankod/refine-core";
 import {
   notificationProvider,
   RefineSnackbarProvider,
   ReadyPage,
   ErrorComponent,
-} from "@refinedev/mui";
-import CssBaseline from "@mui/material/CssBaseline";
-import GlobalStyles from "@mui/material/GlobalStyles";
-import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
-import ChatBubbleOutline from "@mui/icons-material/ChatBubbleOutline";
-import PeopleAltOutlined from "@mui/icons-material/PeopleAltOutlined";
-import StarOutlineRounded from "@mui/icons-material/StarOutlineRounded";
-import VillaOutlined from "@mui/icons-material/VillaOutlined";
+  CssBaseline,
+  GlobalStyles,
+} from "@pankod/refine-mui";
+import {
+  AccountCircleOutlined,
+  ChatBubbleOutline,
+  PeopleAltOutlined,
+  StarOutlineRounded,
+  VillaOutlined,
+} from "@mui/icons-material";
 
-import dataProvider from "@refinedev/simple-rest";
-import routerProvider from "@refinedev/react-router-v6/legacy";
+import dataProvider from "@pankod/refine-simple-rest";
+import routerProvider from "@pankod/refine-react-router-v6";
 import axios, { AxiosRequestConfig } from "axios";
 
 import { Title } from "components/layout/Title";
@@ -86,15 +85,16 @@ function App() {
     //   localStorage.setItem("token", `${credential}`);
 
     //   return Promise.resolve();
-  // },
-    login:({credential}: CredentialResponse) => {
+    // },
+    login: ({ credential }: CredentialResponse) => {
       const profileObj = credential ? parseJwt(credential) : null;
 
       if (profileObj) {
         localStorage.setItem(
-          'user',
-          JSON.stringify({...profileObj, avatar: profileObj.picture})
-      )}
+          "user",
+          JSON.stringify({ ...profileObj, avatar: profileObj.picture })
+        );
+      }
 
       localStorage.setItem("token", `${credential}`);
 
@@ -179,8 +179,8 @@ function App() {
           Sider={Sider}
           Layout={Layout}
           Header={Header}
-          legacyRouterProvider={routerProvider}
-          legacyAuthProvider={authProvider}
+          routerProvider={routerProvider}
+          authProvider={authProvider}
           LoginPage={LoginPage}
           DashboardPage={HomePage}
         />
