@@ -1,9 +1,9 @@
 import React from "react";
-import { LayoutProps } from "@pankod/refine-core";
-import { Box } from "@pankod/refine-mui";
+import { LayoutProps } from "@refinedev/core";
+import Box from "@mui/material/Box";
 
-import { Sider as DefaultSider } from "./Sider/Sider";
-import { Header as DefaultHeader } from "./Header";
+import { Sider as DefaultSider } from "../sider";
+import { Header as DefaultHeader } from "../header";
 
 export const Layout: React.FC<LayoutProps> = ({
   Sider,

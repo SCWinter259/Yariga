@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { useGetIdentity } from "@pankod/refine-core";
-import { FieldValues, useForm } from "@pankod/refine-react-hook-form";
+import { useGetIdentity } from "@refinedev/core";
+import { useForm } from "@refinedev/react-hook-form";
 
-import { Form } from "components/common/Form";
+import { FieldValues } from "react-hook-form";
 
-export const CreatePropertyPage = () => {
-  const { data: user } = useGetIdentity();
+import Form from "components/common/Form";
+
+const CreateProperty = () => {
+  const { data: user } = useGetIdentity({
+    v3LegacyAuthProviderCompatible: true,
+  });
   const [propertyImage, setPropertyImage] = useState({ name: "", url: "" });
   const {
     refineCore: { onFinish, formLoading },
@@ -29,7 +33,11 @@ export const CreatePropertyPage = () => {
   const onFinishHandler = async (data: FieldValues) => {
     if (!propertyImage.name) return alert("Please select an image");
 
-    await onFinish({ ...data, photo: propertyImage.url, email: user.email });
+    await onFinish({
+      ...data,
+      photo: propertyImage.url,
+      email: user.email,
+    });
   };
 
   return (
@@ -45,3 +53,4 @@ export const CreatePropertyPage = () => {
     />
   );
 };
+export default CreateProperty;

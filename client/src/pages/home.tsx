@@ -1,14 +1,16 @@
-import { useList } from "@pankod/refine-core";
+import { useList } from "@refinedev/core";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 
-import { Typography, Box, Stack } from "@pankod/refine-mui";
+import {
+  PieChart,
+  PropertyReferrals,
+  TotalRevenue,
+  PropertyCard,
+} from "components";
 
-import { PieChart } from "components/charts/PieChart";
-import { PropertyReferrals } from "components/charts/PropertyReferrals";
-import { TotalRevenue } from "components/charts/TotalRevenue";
-import { PropertyCard } from "components/common/PropertyCard";
-import { colors } from "constants/colors";
-
-export const HomePage = () => {
+const Home = () => {
   const { data, isLoading, isError } = useList({
     resource: "properties",
     config: {
@@ -25,7 +27,7 @@ export const HomePage = () => {
 
   return (
     <Box>
-      <Typography fontSize={25} fontWeight={700} color={colors.EERIE_BLACK}>
+      <Typography fontSize={25} fontWeight={700} color="#11142D">
         Dashboard
       </Typography>
 
@@ -34,25 +36,25 @@ export const HomePage = () => {
           title="Properties for Sale"
           value={684}
           series={[75, 25]}
-          colors={[colors.ROYAL_BLUE, colors.COLUMBIA_BLUE]}
+          colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
           title="Properties for Rent"
           value={550}
           series={[60, 40]}
-          colors={[colors.ROYAL_BLUE, colors.COLUMBIA_BLUE]}
+          colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
           title="Total customers"
           value={5684}
           series={[75, 25]}
-          colors={[colors.ROYAL_BLUE, colors.COLUMBIA_BLUE]}
+          colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
           title="Properties for Cities"
           value={555}
           series={[75, 25]}
-          colors={[colors.ROYAL_BLUE, colors.COLUMBIA_BLUE]}
+          colors={["#275be8", "#c4e8ef"]}
         />
       </Box>
 
@@ -70,13 +72,13 @@ export const HomePage = () => {
         flex={1}
         borderRadius="15px"
         padding="20px"
-        bgcolor={colors.LOTION}
+        bgcolor="#fcfcfc"
         display="flex"
         flexDirection="column"
         minWidth="100%"
         mt="25px"
       >
-        <Typography fontSize="18px" fontWeight={600} color={colors.EERIE_BLACK}>
+        <Typography fontSize="18px" fontWeight={600} color="#11142d">
           Latest Properties
         </Typography>
 
@@ -96,3 +98,5 @@ export const HomePage = () => {
     </Box>
   );
 };
+
+export default Home;

@@ -1,41 +1,43 @@
-import { Refine, AuthProvider } from "@pankod/refine-core";
+import React from "react";
+
+import {
+  GitHubBanner,
+  Refine,
+  LegacyAuthProvider as AuthProvider,
+} from "@refinedev/core";
 import {
   notificationProvider,
   RefineSnackbarProvider,
   ReadyPage,
   ErrorComponent,
-  CssBaseline,
-  GlobalStyles,
-} from "@pankod/refine-mui";
-import {
-  AccountCircleOutlined,
-  ChatBubbleOutline,
-  PeopleAltOutlined,
-  StarOutlineRounded,
-  VillaOutlined,
-} from "@mui/icons-material";
+} from "@refinedev/mui";
+import CssBaseline from "@mui/material/CssBaseline";
+import GlobalStyles from "@mui/material/GlobalStyles";
+import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
+import ChatBubbleOutline from "@mui/icons-material/ChatBubbleOutline";
+import PeopleAltOutlined from "@mui/icons-material/PeopleAltOutlined";
+import StarOutlineRounded from "@mui/icons-material/StarOutlineRounded";
+import VillaOutlined from "@mui/icons-material/VillaOutlined";
 
-import dataProvider from "@pankod/refine-simple-rest";
-import routerProvider from "@pankod/refine-react-router-v6";
+import dataProvider from "@refinedev/simple-rest";
+import routerProvider from "@refinedev/react-router-v6/legacy";
 import axios, { AxiosRequestConfig } from "axios";
-
-import { Title } from "components/layout/Title";
-import { Sider } from "components/layout/Sider/Sider";
-import { Header } from "components/layout/Header";
-import { Layout } from "components/layout/Layout";
-import { ColorModeContextProvider } from "contexts/colorMode";
+import { Title, Sider, Layout, Header } from "components/layout";
+import { ColorModeContextProvider } from "contexts";
 import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";
 
-import { LoginPage } from "pages/login";
-import { HomePage } from "pages/home";
-import { AgentsPage } from "pages/agents";
-import { MyProfilePage } from "pages/my-profile";
-import { PropertyDetailsPage } from "pages/property-details";
-import { AllPropertiesPage } from "pages/all-properties";
-import { CreatePropertyPage } from "pages/create-property";
-import { AgentProfilePage } from "pages/agent-profile";
-import { EditPropertyPage } from "pages/edit-property";
+import {
+  Login,
+  Home,
+  Agents,
+  MyProfile,
+  PropertyDetails,
+  AllProperties,
+  CreateProperty,
+  AgentProfile,
+  EditProperty,
+} from "pages";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -53,49 +55,35 @@ axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
 
 function App() {
   const authProvider: AuthProvider = {
-    // login: async ({ credential }: CredentialResponse) => {
-    //   const profileObj = credential ? parseJwt(credential) : null;
-
-    //   if (profileObj) {
-    //     const response = await fetch("http://localhost:8080/api/v1/users", {
-    //       method: "POST",
-    //       headers: { "Content-Type": "application/json" },
-    //       body: JSON.stringify({
-    //         name: profileObj.name,
-    //         email: profileObj.email,
-    //         avatar: profileObj.picture,
-    //       }),
-    //     });
-
-    //     const data = await response.json();
-
-    //     if (response.status === 200) {
-    //       localStorage.setItem(
-    //         "user",
-    //         JSON.stringify({
-    //           ...profileObj,
-    //           avatar: profileObj.picture,
-    //           userid: data._id,
-    //         })
-    //       );
-    //     } else {
-    //       return Promise.reject();
-    //     }
-    //   }
-    //   localStorage.setItem("token", `${credential}`);
-
-    //   return Promise.resolve();
-    // },
-    login: ({ credential }: CredentialResponse) => {
+    login: async ({ credential }: CredentialResponse) => {
       const profileObj = credential ? parseJwt(credential) : null;
 
       if (profileObj) {
-        localStorage.setItem(
-          "user",
-          JSON.stringify({ ...profileObj, avatar: profileObj.picture })
-        );
-      }
+        const response = await fetch("http://localhost:8080/api/v1/users", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: profileObj.name,
+            email: profileObj.email,
+            avatar: profileObj.picture,
+          }),
+        });
 
+        const data = await response.json();
+
+        if (response.status === 200) {
+          localStorage.setItem(
+            "user",
+            JSON.stringify({
+              ...profileObj,
+              avatar: profileObj.picture,
+              userid: data._id,
+            })
+          );
+        } else {
+          return Promise.reject();
+        }
+      }
       localStorage.setItem("token", `${credential}`);
 
       return Promise.resolve();
@@ -135,43 +123,44 @@ function App() {
 
   return (
     <ColorModeContextProvider>
+      <GitHubBanner />
       <CssBaseline />
       <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
       <RefineSnackbarProvider>
         <Refine
-          dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+          dataProvider={dataProvider("http://localhost:8080/api/v1")}
           notificationProvider={notificationProvider}
           ReadyPage={ReadyPage}
           catchAll={<ErrorComponent />}
           resources={[
             {
               name: "properties",
-              list: AllPropertiesPage,
-              show: PropertyDetailsPage,
-              create: CreatePropertyPage,
-              edit: EditPropertyPage,
+              list: AllProperties,
+              show: PropertyDetails,
+              create: CreateProperty,
+              edit: EditProperty,
               icon: <VillaOutlined />,
             },
             {
               name: "agents",
-              list: AgentsPage,
-              show: AgentProfilePage,
+              list: Agents,
+              show: AgentProfile,
               icon: <PeopleAltOutlined />,
             },
             {
               name: "reviews",
-              list: HomePage,
+              list: Home,
               icon: <StarOutlineRounded />,
             },
             {
               name: "messages",
-              list: HomePage,
+              list: Home,
               icon: <ChatBubbleOutline />,
             },
             {
               name: "my-profile",
               options: { label: "My Profile " },
-              list: MyProfilePage,
+              list: MyProfile,
               icon: <AccountCircleOutlined />,
             },
           ]}
@@ -179,10 +168,10 @@ function App() {
           Sider={Sider}
           Layout={Layout}
           Header={Header}
-          routerProvider={routerProvider}
-          authProvider={authProvider}
-          LoginPage={LoginPage}
-          DashboardPage={HomePage}
+          legacyRouterProvider={routerProvider}
+          legacyAuthProvider={authProvider}
+          LoginPage={Login}
+          DashboardPage={Home}
         />
       </RefineSnackbarProvider>
     </ColorModeContextProvider>

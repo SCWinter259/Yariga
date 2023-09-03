@@ -1,9 +1,15 @@
 import React from "react";
-import { useGetIdentity } from "@pankod/refine-core";
-import { AppBar, Avatar, Stack, Toolbar, Typography } from "@pankod/refine-mui";
+import { useGetIdentity } from "@refinedev/core";
+import AppBar from "@mui/material/AppBar";
+import Avatar from "@mui/material/Avatar";
+import Stack from "@mui/material/Stack";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
 
 export const Header: React.FC = () => {
-  const { data: user } = useGetIdentity();
+  const { data: user } = useGetIdentity({
+    v3LegacyAuthProviderCompatible: true,
+  });
   const showUserInfo = user && (user.name || user.avatar);
 
   return (

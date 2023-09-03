@@ -1,8 +1,8 @@
-import { Button } from "@pankod/refine-mui";
+import Button from "@mui/material/Button";
 
 import { CustomButtonProps } from "interfaces/common";
 
-export const CustomButton = ({
+const CustomButton = ({
   type,
   title,
   backgroundColor,
@@ -39,3 +39,5 @@ export const CustomButton = ({
     </Button>
   );
 };
+
+export default CustomButton;
