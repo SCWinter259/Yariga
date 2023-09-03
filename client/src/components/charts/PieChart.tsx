@@ -1,15 +1,17 @@
-import { PieChartProps } from "interfaces/home";
-import { Box, Typography, Stack } from "@pankod/refine-mui";
 import ReactApexChart from "react-apexcharts";
-import { colors as myColors } from "../../constants/colors";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
 
-export const PieChart = ({ title, value, series, colors }: PieChartProps) => {
+import { PieChartProps } from "interfaces/home";
+
+const PieChart = ({ title, value, series, colors }: PieChartProps) => {
   return (
     <Box
       id="chart"
       flex={1}
       display="flex"
-      bgcolor={myColors.LOTION}
+      bgcolor="#fcfcfc"
       flexDirection="row"
       justifyContent="space-between"
       alignItems="center"
@@ -21,10 +23,10 @@ export const PieChart = ({ title, value, series, colors }: PieChartProps) => {
       width="fit-content"
     >
       <Stack direction="column">
-        <Typography fontSize={14} color={myColors.ROMAN_SILVER}>
+        <Typography fontSize={14} color="#808191">
           {title}
         </Typography>
-        <Typography fontSize={24} color={myColors.EERIE_BLACK} fontWeight={700} mt={1}>
+        <Typography fontSize={24} color="#11142d" fontWeight={700} mt={1}>
           {value}
         </Typography>
       </Stack>
@@ -43,3 +45,5 @@ export const PieChart = ({ title, value, series, colors }: PieChartProps) => {
     </Box>
   );
 };
+
+export default PieChart;

@@ -1,21 +1,56 @@
-import { propertyReferralsInfo } from "constants/propertyReferralsInfo";
-import { Box, Stack, Typography } from "@pankod/refine-mui";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
-import { ProgressBar } from './ProgressBar';
-import { colors } from "constants/colors";
+import { propertyReferralsInfo } from "constants/index";
 
-export const PropertyReferrals = () => {
+interface ProgressBarProps {
+  title: string;
+  percentage: number;
+  color: string;
+}
+
+const ProgressBar = ({ title, percentage, color }: ProgressBarProps) => (
+  <Box width="100%">
+    <Stack direction="row" alignItems="center" justifyContent="space-between">
+      <Typography fontSize={16} fontWeight={500} color="#11142d">
+        {title}
+      </Typography>
+      <Typography fontSize={16} fontWeight={500} color="#11142d">
+        {percentage}%
+      </Typography>
+    </Stack>
+    <Box
+      mt={2}
+      position="relative"
+      width="100%"
+      height="8px"
+      borderRadius={1}
+      bgcolor="#e4e8ef"
+    >
+      <Box
+        width={`${percentage}%`}
+        bgcolor={color}
+        position="absolute"
+        height="100%"
+        borderRadius={1}
+      />
+    </Box>
+  </Box>
+);
+
+const PropertyReferrals = () => {
   return (
     <Box
       p={4}
-      bgcolor={colors.LOTION}
+      bgcolor="#fcfcfc"
       id="chart"
       minWidth={490}
       display="flex"
       flexDirection="column"
       borderRadius="15px"
     >
-      <Typography fontSize={18} fontWeight={600} color={colors.EERIE_BLACK}>
+      <Typography fontSize={18} fontWeight={600} color="#11142d">
         Property Referrals
       </Typography>
 
@@ -27,3 +62,5 @@ export const PropertyReferrals = () => {
     </Box>
   );
 };
+
+export default PropertyReferrals;
