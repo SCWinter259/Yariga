@@ -6,7 +6,6 @@ import Drawer from "@mui/material/Drawer";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import Collapse from "@mui/material/Collapse";
 import Tooltip from "@mui/material/Tooltip";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
@@ -14,8 +13,6 @@ import IconButton from "@mui/material/IconButton";
 import MuiList from "@mui/material/List";
 import ListOutlined from "@mui/icons-material/ListOutlined";
 import Logout from "@mui/icons-material/Logout";
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
 import ChevronLeft from "@mui/icons-material/ChevronLeft";
 import ChevronRight from "@mui/icons-material/ChevronRight";
 import MenuRounded from "@mui/icons-material/MenuRounded";
@@ -33,6 +30,7 @@ import {
 } from "@refinedev/core";
 
 import { Title as DefaultTitle } from "../title";
+import { TreeViewHasItems } from "./SiderSupportComponents/TreeViewHasItems";
 
 export const Sider: typeof DefaultSider = ({ render }) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -84,72 +82,23 @@ export const Sider: typeof DefaultSider = ({ render }) => {
 
       if (children.length > 0) {
         return (
-          <CanAccess
-            key={route}
-            resource={name.toLowerCase()}
-            action="list"
-            params={{
-              resource: item,
-            }}
-          >
-            <div key={route}>
-              <Tooltip
-                title={label ?? name}
-                placement="right"
-                disableHoverListener={!collapsed}
-                arrow
-              >
-                <ListItemButton
-                  onClick={() => {
-                    if (collapsed) {
-                      setCollapsed(false);
-                      if (!isOpen) {
-                        handleClick(route || "");
-                      }
-                    } else {
-                      handleClick(route || "");
-                    }
-                  }}
-                  sx={{
-                    pl: isNested ? 4 : 2,
-                    justifyContent: "center",
-                    "&.Mui-selected": {
-                      "&:hover": {
-                        backgroundColor: "transparent",
-                      },
-                      backgroundColor: "transparent",
-                    },
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      justifyContent: "center",
-                      minWidth: 36,
-                      color: "primary.contrastText",
-                    }}
-                  >
-                    {icon ?? <ListOutlined />}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={label}
-                    primaryTypographyProps={{
-                      noWrap: true,
-                      fontSize: "16px",
-                      fontWeight: isSelected ? "bold" : "normal",
-                    }}
-                  />
-                  {!collapsed && (isOpen ? <ExpandLess /> : <ExpandMore />)}
-                </ListItemButton>
-              </Tooltip>
-              {!collapsed && (
-                <Collapse in={open[route || ""]} timeout="auto" unmountOnExit>
-                  <MuiList component="div" disablePadding>
-                    {renderTreeView(children, selectedKey)}
-                  </MuiList>
-                </Collapse>
-              )}
-            </div>
-          </CanAccess>
+          <TreeViewHasItems
+            route={route}
+            name={name}
+            item={item}
+            label={label}
+            collapsed={collapsed}
+            setCollapsed={setCollapsed}
+            isOpen={isOpen}
+            handleClick={handleClick}
+            isNested={isNested}
+            icon={icon}
+            isSelected={isSelected}
+            open={open}
+            renderTreeView={renderTreeView}
+            children={children}
+            selectedKey={selectedKey}
+          />
         );
       }
 

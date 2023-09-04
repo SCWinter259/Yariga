@@ -123,7 +123,6 @@ function App() {
 
   return (
     <ColorModeContextProvider>
-      <GitHubBanner />
       <CssBaseline />
       <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
       <RefineSnackbarProvider>
