@@ -2,6 +2,7 @@ import ReactApexChart from "react-apexcharts";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
+import { colors as colorConsts } from "constants/colors";
 
 import { PieChartProps } from "interfaces/home";
 
@@ -11,7 +12,7 @@ const PieChart = ({ title, value, series, colors }: PieChartProps) => {
       id="chart"
       flex={1}
       display="flex"
-      bgcolor="#fcfcfc"
+      bgcolor={colorConsts.LOTION}
       flexDirection="row"
       justifyContent="space-between"
       alignItems="center"
@@ -23,10 +24,15 @@ const PieChart = ({ title, value, series, colors }: PieChartProps) => {
       width="fit-content"
     >
       <Stack direction="column">
-        <Typography fontSize={14} color="#808191">
+        <Typography fontSize={14} color={colorConsts.ROMAN_SILVER}>
           {title}
         </Typography>
-        <Typography fontSize={24} color="#11142d" fontWeight={700} mt={1}>
+        <Typography
+          fontSize={24}
+          color={colorConsts.EERIE_BLACK}
+          fontWeight={700}
+          mt={1}
+        >
           {value}
         </Typography>
       </Stack>

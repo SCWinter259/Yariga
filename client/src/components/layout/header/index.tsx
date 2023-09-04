@@ -1,10 +1,7 @@
 import React from "react";
 import { useGetIdentity } from "@refinedev/core";
-import AppBar from "@mui/material/AppBar";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import { AppBar, Toolbar, Stack, Typography, Avatar } from "@mui/material";
+import { colors } from "constants/colors";
 
 export const Header: React.FC = () => {
   const { data: user } = useGetIdentity({
@@ -17,7 +14,7 @@ export const Header: React.FC = () => {
       color="default"
       position="sticky"
       elevation={0}
-      sx={{ background: "#fcfcf" }}
+      sx={{ background: colors.LOTION }}
     >
       <Toolbar>
         <Stack
