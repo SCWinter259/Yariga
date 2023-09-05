@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import { yariga } from "../assets";
 
 import { CredentialResponse } from "../interfaces/google";
+import { colors } from "constants/colors";
 
 export const Login: React.FC = () => {
   const { mutate: login } = useLogin<CredentialResponse>({
@@ -44,7 +45,7 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <Box component="div" sx={{ backgroundColor: "#FCFCFC" }}>
+    <Box component="div" sx={{ backgroundColor: colors.LOTION }}>
       <Container
         component="main"
         maxWidth="xs"

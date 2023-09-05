@@ -4,11 +4,12 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 
 import {
-  PieChart,
   PropertyReferrals,
   TotalRevenue,
   PropertyCard,
 } from "components";
+import { PieCharts } from "./HomeSupportComponents/PieCharts";
+import { colors } from "constants/colors";
 
 const Home = () => {
   const { data, isLoading, isError } = useList({
@@ -27,36 +28,11 @@ const Home = () => {
 
   return (
     <Box>
-      <Typography fontSize={25} fontWeight={700} color="#11142D">
+      <Typography fontSize={25} fontWeight={700} color={colors.EERIE_BLACK}>
         Dashboard
       </Typography>
 
-      <Box mt="20px" display="flex" flexWrap="wrap" gap={4}>
-        <PieChart
-          title="Properties for Sale"
-          value={684}
-          series={[75, 25]}
-          colors={["#275be8", "#c4e8ef"]}
-        />
-        <PieChart
-          title="Properties for Rent"
-          value={550}
-          series={[60, 40]}
-          colors={["#275be8", "#c4e8ef"]}
-        />
-        <PieChart
-          title="Total customers"
-          value={5684}
-          series={[75, 25]}
-          colors={["#275be8", "#c4e8ef"]}
-        />
-        <PieChart
-          title="Properties for Cities"
-          value={555}
-          series={[75, 25]}
-          colors={["#275be8", "#c4e8ef"]}
-        />
-      </Box>
+      <PieCharts/>
 
       <Stack
         mt="25px"
@@ -72,13 +48,13 @@ const Home = () => {
         flex={1}
         borderRadius="15px"
         padding="20px"
-        bgcolor="#fcfcfc"
+        bgcolor={colors.LOTION}
         display="flex"
         flexDirection="column"
         minWidth="100%"
         mt="25px"
       >
-        <Typography fontSize="18px" fontWeight={600} color="#11142d">
+        <Typography fontSize="18px" fontWeight={600} color={colors.EERIE_BLACK}>
           Latest Properties
         </Typography>
 
