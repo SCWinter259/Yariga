@@ -11,7 +11,7 @@ const MyProfile = () => {
     id: user?.userid,
   });
 
-  const myProfile = data?.data ?? [];
+  const myProfile = data?.data;
 
   if (isLoading) return <div>loading...</div>;
   if (isError) return <div>error...</div>;
@@ -19,10 +19,10 @@ const MyProfile = () => {
   return (
     <Profile
       type="My"
-      name={myProfile.name}
-      email={myProfile.email}
-      avatar={myProfile.avatar}
-      properties={myProfile.allProperties}
+      name={myProfile?.name}
+      email={myProfile?.email}
+      avatar={myProfile?.avatar}
+      properties={myProfile?.allProperties}
     />
   );
 };

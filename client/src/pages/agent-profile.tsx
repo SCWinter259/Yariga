@@ -13,7 +13,7 @@ const AgentProfile = () => {
 
   console.log(data);
 
-  const myProfile = data?.data ?? [];
+  const myProfile = data?.data;
 
   if (isLoading) return <div>loading...</div>;
   if (isError) return <div>error...</div>;
@@ -21,10 +21,10 @@ const AgentProfile = () => {
   return (
     <Profile
       type="Agent"
-      name={myProfile.name}
-      email={myProfile.email}
-      avatar={myProfile.avatar}
-      properties={myProfile.allProperties}
+      name={myProfile?.name}
+      email={myProfile?.email}
+      avatar={myProfile?.avatar}
+      properties={myProfile?.allProperties}
     />
   );
 };

@@ -1,7 +1,7 @@
 import { useList } from "@refinedev/core";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-
+import { colors } from "constants/colors";
 import { AgentCard } from "components";
 
 const Agents = () => {
@@ -14,7 +14,7 @@ const Agents = () => {
 
   return (
     <Box>
-      <Typography fontSize={25} fontWeight={700} color="#11142d">
+      <Typography fontSize={25} fontWeight={700} color={colors.EERIE_BLACK}>
         Agents List
       </Typography>
 
@@ -24,7 +24,7 @@ const Agents = () => {
           display: "flex",
           flexWrap: "wrap",
           gap: "20px",
-          backgroundColor: "#fcfcfc",
+          backgroundColor: colors.LOTION,
         }}
       >
         {allAgents.map((agent) => (
