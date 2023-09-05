@@ -1,7 +1,6 @@
 import React from "react";
 
 import {
-  GitHubBanner,
   Refine,
   LegacyAuthProvider as AuthProvider,
 } from "@refinedev/core";
@@ -127,7 +126,7 @@ function App() {
       <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
       <RefineSnackbarProvider>
         <Refine
-          dataProvider={dataProvider("https://yariga-4qxs.onrender.com/api/v1")}
+          dataProvider={dataProvider("https://yariga-4qxs.onrender.com")}
           notificationProvider={notificationProvider}
           ReadyPage={ReadyPage}
           catchAll={<ErrorComponent />}
